@@ -5,5 +5,9 @@ class Note < ActiveRecord::Base
   validates :content, presence: true
 
   scope :sorted, lambda { order('created_at DESC') }
+  
+  def preview
+    self.content.slice(0..99) << " ... (readmore)"
+  end 
 
 end
